@@ -13,7 +13,11 @@
  * [Sun calculations rewritten to java from](https://github.com/mourner/suncalc/blob/master/suncalc.js)
 
 
-## A little theory:
+### 3rd party library
+  * [OKHttp](http://square.github.io/okhttp/)
+
+
+## A little something to freshen up:
 ###  [Definitions](http://www.restapitutorial.com/lessons/httpmethods.html)
 
 * HTTP: HyperText Transfer Protocol
