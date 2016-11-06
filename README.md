@@ -27,3 +27,9 @@
 * CRUD: Create/Retrieve/Update/Delete
 * [URI vs. URL by Daniel Miessler](https://danielmiessler.com/study/url-uri/#gs.cYS4A2k)
 
+
+### Remember to add the correct internet permission in the manifest file:
+```xml
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+```
+
