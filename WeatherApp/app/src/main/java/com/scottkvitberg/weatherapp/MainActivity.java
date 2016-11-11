@@ -1,5 +1,8 @@
 package com.scottkvitberg.weatherapp;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,34 +28,68 @@ public class MainActivity extends AppCompatActivity {
 
         String forecastURl = "https://api.darksky.net/forecast/"+
                 apiKey + "/" + latitude + "," + longitude;
+        if(isNetworkAvailable()) {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(forecastURl)
+                    .build();
 
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(forecastURl)
-                .build();
 
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
 
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-                // TODO
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-
-                try {
-
-                    if (response.isSuccessful()){
-                        Log.v(TAG, response.body().string());
-                    }
-                } catch (IOException e) {
-                    Log.e(TAG, "Exception caught: ", e);
+                    // TODO
                 }
-            }
-        });
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                    try {
+                        Log.v(TAG, response.body().string());
+                        if (response.isSuccessful()) {
+
+                        } else {
+                            alertUser();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught: ", e);
+                    }
+                }
+            });
+        }else{
+            noNetworkAvailable();
+        }
+        Log.d(TAG, "Main UI thread is running!");
+
 
     }
+
+
+
+    private boolean isNetworkAvailable() {
+
+        ConnectivityManager manager = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if(networkInfo != null && networkInfo.isConnected()){
+            isAvailable = true;
+
+        }
+        return isAvailable;
+    }
+
+    private void noNetworkAvailable() {
+        NetworkDialogFragment networkDialog = new NetworkDialogFragment();
+        networkDialog.show(getFragmentManager(), "error_dialog");
+
+    }
+
+    private void alertUser() {
+        AlertDialogFragment dialog = new AlertDialogFragment();
+        dialog.show(getFragmentManager(), "error_dialog");
+    }
+
 }
