@@ -5,6 +5,7 @@
 
 * [Forecast.io](https://darksky.net/dev/docs/forecast)
  * Example: https://api.forecast.io/forecast/INSERT_YOUR_FORECAST_API_KEY/37.8267,-122.423
+  * Remember to add your API key
 * [YR](http://om.yr.no/verdata/free-weather-data/) 
 * [SeNorge] (http://www.senorge.no/index.html?p=senorgeny&st=weather)
 
