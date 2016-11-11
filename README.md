@@ -5,6 +5,7 @@
 
 * [Forecast.io](https://darksky.net/dev/docs/forecast)
  * Example: https://api.forecast.io/forecast/INSERT_YOUR_FORECAST_API_KEY/37.8267,-122.423
+  * Remember to add your API key
 * [YR](http://om.yr.no/verdata/free-weather-data/) 
 * [SeNorge] (http://www.senorge.no/index.html?p=senorgeny&st=weather)
 
@@ -31,5 +32,16 @@
 ### Remember to add the correct internet permission in the manifest file:
 ```xml
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+```
+When checking for available networks:
+```java
+ConnectivityManager manager = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+```
+Remember to fix the permission to access the network state when using the ```getActiveNetworkInfo()``` method
+
+```xml
+ <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 ```
 
