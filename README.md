@@ -18,6 +18,9 @@
 ### 3rd party library
   * [OKHttp](http://square.github.io/okhttp/)
 
+### Extentions to help you read JSON
+ * [JSONView for Chrome](https://chrome.google.com/webstore/detail/jsonview/nckmconehaglkoocmmldmilnnpdagigh)
+
 
 ## A little something to freshen up:
 ###  [Definitions](http://www.restapitutorial.com/lessons/httpmethods.html)
