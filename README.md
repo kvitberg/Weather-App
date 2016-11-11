@@ -32,4 +32,15 @@
 ```xml
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 ```
+When checking for available networks:
+```java
+ConnectivityManager manager = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+```
+Remember to fix the permission to access the network state when using the ```getActiveNetworkInfo()``` method
+
+```xml
+ <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+```
 
