@@ -48,3 +48,32 @@ Remember to fix the permission to access the network state when using the ```get
  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 ```
 
+# Forecast.io
+### Icons from forecast.io:
+* clear-day,
+* clear-night, 
+* rain,
+* snow,
+* sleet,
+* wind,
+* fog,
+* cloudy,
+* partly-cloudy-day,
+* partly-cloudy-night
+
+From the docs:
+>  it finds the “worst” weather condition that will happen during the day (4AM to 4AM),
+> and uses the icon for it. The only case where a daily icon will show a *-night value is partly-cloudy-night,
+> and this is done to match the daily summary text. We already have intentions to change this behavior, 
+> because it is confusing
+
+moonPhase - optional, only on daily
+ * 0 = New moon
+ * 0.25 = First quarter moon
+ * 0.5 = Full moon
+ * 0.75 = Last quarter moon
+ 
+ sunriseTime optional, only on daily
+ sunsetTime optional, only on daily
+ windBearing optional
+ 
